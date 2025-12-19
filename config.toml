@@ -1,6 +1,6 @@
-baseURL = "http://St0llyWood.github.io/-/"
+baseURL = "http://St0llyWood.github.io/"
 languageCode = "ru-ru"
-title = "Цветик | Глиняные изделия Светы"
+title = "Цветик | Глиняные изделия"
 theme = ""
 
 [pagination]
