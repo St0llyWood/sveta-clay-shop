@@ -1,0 +1,57 @@
+baseURL = "http://localhost:1313/"
+languageCode = "ru-ru"
+title = "Цветик | Глиняные изделия Светы"
+theme = ""
+
+[pagination]
+  pagerSize = 9
+
+[params]
+  description = "Магазин уникальных глиняных изделий ручной работы в Рыбинске. Авторская керамика на заказ."
+  author = "Светлана"
+  email = "matvey.s1307@gmail.com"
+  phone = "+7 920 135-00-41"
+  city = "Рыбинск"
+  productionTime = "3 дня"
+  instagram = "sveta_clay_art"
+  
+[params.colors]
+  primary = "#FFB6C1"
+  secondary = "#FFDAB9"
+  accent = "#E9967A"
+  light = "#FFF5EE"
+  dark = "#8B4513"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[menu]
+  [[menu.main]]
+    name = "Главная"
+    url = "/"
+    weight = 1
+    
+  [[menu.main]]
+    name = "Магазин"
+    url = "/products/"
+    weight = 2
+    
+  [[menu.main]]
+    name = "Обо мне"
+    url = "/#about"
+    weight = 3
+    
+  [[menu.main]]
+    name = "Контакты"
+    url = "/#contact"
+    weight = 4
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    noClasses = false
+    style = "monokai"

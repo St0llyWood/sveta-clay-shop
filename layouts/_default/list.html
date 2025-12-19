@@ -1,0 +1,47 @@
+{{ define "main" }}
+<section class="products-page">
+    <div class="container">
+        <h1 class="page-title">Все мои работы</h1>
+        
+        <div class="products-container">
+            {{ range .Pages }}
+            <div class="product-item">
+                <div class="product-image-wrapper">
+                    {{ $imageName := replace .File.BaseFileName "-01" "1" }}
+                    {{ $imageName := replace $imageName "-02" "2" }}
+                    {{ $imagePath := printf "/images/products/%s.jpg" $imageName }}
+                    
+                    <img src="{{ $imagePath }}" 
+                         alt="{{ .Title }}"
+                         onerror="this.src='/images/placeholder.jpg'">
+                </div>
+                
+                <div class="product-details">
+                    <h2 class="product-name">{{ .Title }}</h2>
+                    
+                    {{ with .Params.description }}
+                        <p class="product-description">{{ . }}</p>
+                    {{ end }}
+                    
+                    <div class="product-meta">
+                        {{ with .Params.price }}
+                            <span class="product-price">{{ . }} ₽</span>
+                        {{ else }}
+                            <span class="product-price">Цена по запросу</span>
+                        {{ end }}
+                        
+                        {{ with .Params.category }}
+                            <span class="product-category">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    
+                    <a href="{{ .RelPermalink }}" class="product-button" style="margin-top: 1rem;">
+                        <i class="fas fa-shopping-cart"></i> Подробнее
+                    </a>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

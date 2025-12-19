@@ -1,0 +1,47 @@
+<!-- layouts/partials/product-card.html -->
+<article class="product-card" data-category="{{ .Params.category }}">
+    <div style="position: relative; overflow: hidden;">
+        {{ with .Params.images }}
+            <img src="{{ index . 0 }}" alt="{{ $.Title }}" class="product-image">
+        {{ else }}
+            {{ $imagePath := printf "/images/products/%s" (replace .File.BaseFileName "-01" "1") }}
+            {{ $imagePath = printf "%s.jpg" $imagePath }}
+            <img src="{{ $imagePath }}" alt="{{ .Title }}" class="product-image">
+        {{ end }}
+        
+        <div style="position: absolute; top: 15px; right: 15px; background: rgba(255, 255, 255, 0.9); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; color: var(--accent);">
+            NEW
+        </div>
+    </div>
+    
+    <div class="product-info">
+        <h3 class="product-title">{{ .Title }}</h3>
+        
+        <p class="product-description">
+            {{ with .Description }}
+                {{ . }}
+            {{ else }}
+                Уникальное изделие ручной работы. Каждое такое же особенное, как и вы.
+            {{ end }}
+        </p>
+        
+        {{ with .Params.price }}
+        <div class="product-price">{{ . }} ₽</div>
+        {{ else }}
+        <div class="product-price" style="color: #666; font-style: italic;">Цена по запросу</div>
+        {{ end }}
+        
+        <div class="product-meta">
+            {{ with .Params.category }}
+            <span class="product-category">{{ . }}</span>
+            {{ else }}
+            <span class="product-category">Керамика</span>
+            {{ end }}
+            
+            <button class="order-button" onclick="openOrderModal('{{ .Title }}')">
+                <span>Заказать</span>
+                <span style="font-size: 1.2rem;">→</span>
+            </button>
+        </div>
+    </div>
+</article>
